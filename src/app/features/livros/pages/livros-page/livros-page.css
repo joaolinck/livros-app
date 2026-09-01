@@ -1,0 +1,39 @@
+.cabecalho-pagina {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
+.formulario-livro {
+	display: grid;
+	gap: 0.75rem;
+	margin: 1.5rem 0;
+	padding: 1rem;
+	border: 1px solid #d6dbe1;
+	border-radius: 0.5rem;
+}
+
+.formulario-livro h2 {
+	margin: 0;
+}
+
+.formulario-livro label {
+	display: grid;
+	gap: 0.35rem;
+}
+
+.formulario-livro input,
+.formulario-livro textarea,
+.formulario-livro select {
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.6rem;
+	border: 1px solid #9aa4af;
+	border-radius: 0.25rem;
+	font: inherit;
+}
+
+.formulario-livro small {
+	color: #b42318;
+}

@@ -1,0 +1,53 @@
+<main class="container">
+    <div class="cabecalho-pagina">
+        <h1>Gerenciamento de livros</h1>
+        <button type="button" (click)="alternarFormulario()">
+            {{ mostrandoFormulario() ? "Cancelar" : "Cadastrar livro" }}
+        </button>
+    </div>
+
+    @if (mostrandoFormulario()) {
+    <form class="formulario-livro" [formGroup]="formulario" (ngSubmit)="adicionarLivro()">
+        <h2>Novo livro</h2>
+
+        <label>
+            Título
+            <input type="text" formControlName="titulo" />
+        </label>
+        @if (formulario.controls.titulo.touched && formulario.controls.titulo.invalid) {
+        <small>Informe o título.</small>
+        }
+
+        <label>
+            Quantidade de páginas
+            <input type="number" min="1" formControlName="quantidadePaginas" />
+        </label>
+        @if (formulario.controls.quantidadePaginas.touched && formulario.controls.quantidadePaginas.invalid) {
+        <small>Informe uma quantidade válida de páginas.</small>
+        }
+
+        <label>
+            Ano de publicação
+            <input type="number" min="0" formControlName="anoPublicacao" />
+        </label>
+        @if (formulario.controls.anoPublicacao.touched && formulario.controls.anoPublicacao.invalid) {
+        <small>Informe o ano de publicação.</small>
+        }
+
+        <label>
+            Nome do autor
+            <input type="text" formControlName="nomeAutor" />
+        </label>
+        @if (formulario.controls.nomeAutor.touched && formulario.controls.nomeAutor.invalid) {
+        <small>Informe o nome do autor.</small>
+        }
+
+        <button type="submit" [disabled]="salvando()">
+            {{ salvando() ? "Salvando..." : "Salvar livro" }}
+        </button>
+    </form>
+    }
+
+    <app-filtro-livros [pesquisa]="pesquisa()" (pesquisaChange)="atualizarPesquisa($event)" />
+    <app-lista-livros [livros]="livrosFiltrados()" [carregando]="carregando()" [erro]="erro()" />
+</main>
